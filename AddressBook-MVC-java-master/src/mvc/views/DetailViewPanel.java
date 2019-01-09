@@ -125,7 +125,7 @@ public class DetailViewPanel extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 102, 204));
-        jLabel4.setText("Address");
+        jLabel4.setText("Address*");
 
         txt_address.setFont(new java.awt.Font("Tempus Sans ITC", 2, 11)); // NOI18N
         txt_address.setForeground(new java.awt.Color(255, 0, 255));

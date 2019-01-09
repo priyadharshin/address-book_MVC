@@ -58,12 +58,15 @@ public class AddressBookController {
                     openEdit();
                 else if(e.getSource() == view.getDelete())
                     openDelete();
+                 else if(e.getSource() == view.getSearch())
+                    openSearch ();
             }
         };
         
         view.getAdd().addActionListener(actionListener);
         view.getDelete().addActionListener(actionListener);
         view.getEdit().addActionListener(actionListener);
+        view.getSearch().addActionListener(actionListener);
       
     }
     
@@ -146,15 +149,38 @@ public class AddressBookController {
         boolean valid = false;
         String name = contactDetailsPanel.getNameField().getText();
         String mobile = contactDetailsPanel.getMobileField().getText();
-        if (name==null||name.equals("")||(mobile==null||mobile.equals("")))
-            JOptionPane.showMessageDialog(new JFrame(), "Fields Marked as * are Mandatory","Inane error", JOptionPane.ERROR_MESSAGE);
-        else 
+        String address = contactDetailsPanel.getAddressField().getText(); 
+        long phone;
+        if (name==null||name.equals(""))
+            JOptionPane.showMessageDialog(new JFrame(), "Please enter your name","Inane error", JOptionPane.ERROR_MESSAGE);
+        else if (mobile==null||mobile.equals(""))
+               JOptionPane.showMessageDialog(new JFrame(), "Enter your mobile number","Inane error", JOptionPane.ERROR_MESSAGE);
+       /*else if(mobile.length()>0)
+        {
+            if(mobile.length()==10)
+            {
+                try
+                {
+                 System.out.println("going to check phone");
+                 phone=Long.parseLong(mobile);
+            }
+                catch(NumberFormatException e)
+                {
+                    JOptionPane.showMessageDialog(new JFrame(),"Enter 10 digit mobile number","Inane error",JOptionPane.ERROR_MESSAGE);
+                }
+                if((mobile.length()>10)||(mobile.length()<10))
+                        {
+                JOptionPane.showMessageDialog(new JFrame(),"Not a valid mobile number","Inane error",JOptionPane.ERROR_MESSAGE);
+            }
+        }*/
+        else if (address==null||address.equals(""))
+               JOptionPane.showMessageDialog(new JFrame(), "Enter your address","Inane error", JOptionPane.ERROR_MESSAGE);
+        /*}*/
             valid = true;
         return valid;
-               
-    }
-     
-    private void openEdit(){
+    }          
+        
+      private void openEdit(){
         dialog =  new ContactDialog("Update Entries");
         final String originalName=detailPanel.getNameField().getText();
         dialog.getPanel().setName(detailPanel.getNameField().getText());
